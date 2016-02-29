@@ -34,7 +34,9 @@ var wiredepConf = {
 	directory: paths.bower
 };
 
-gulp.task('default', ['dev']);
+gulp.task('default', function(cb){
+	return gulpSequence('clean', 'dev', cb);
+});
 
 gulp.task('watch', function(){
 	gulp.watch([
@@ -43,7 +45,7 @@ gulp.task('watch', function(){
 });
 
 gulp.task('dev', function(cb){
-	return gulpSequence('clean', ['partials', 'sass', 'js'], 'inject', 'build', cb);
+	return gulpSequence(['partials', 'sass', 'js'], 'inject', 'build', cb);
 });
 
 gulp.task('clean', function(cb){
