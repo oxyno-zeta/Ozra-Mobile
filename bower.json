@@ -1,13 +1,11 @@
 {
   "name": "Ozra",
   "private": "true",
-  "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.2.4"
-  },
   "dependencies": {
     "pouchdb": "^5.2.1",
     "ngstorage": "^0.3.10",
     "angular-pouchdb": "^4.1.0",
-    "lodash": "^4.5.1"
+    "lodash": "^4.5.1",
+    "ionic": "driftyco/ionic-bower#1.2.4"
   }
 }
