@@ -224,8 +224,7 @@ platforms
 plugins
 hooks
 
-www/css/ionic.app*.css
-www/lib/
+www/
 resources/android/
 resources/ios/
-
+bower_components/
