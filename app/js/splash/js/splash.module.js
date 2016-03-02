@@ -7,9 +7,6 @@
 	'use strict';
 
 	angular
-		.module('ozra', [
-			'ozra.core',
-			'ozra.splash'
-		]);
+		.module('ozra.splash', []);
 
 })();
