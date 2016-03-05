@@ -1,0 +1,30 @@
+<!--<ion-header-bar align-title="center" class="bar-positive">
+    <h1 class="title">Login</h1>
+</ion-header-bar>-->
+<ion-view>
+    <ion-nav-title>
+        Login
+    </ion-nav-title>
+
+    <ion-content>
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Username</span>
+                <input type="text" ng-model="loginCtrl.form.username" placeholder="Username">
+            </label>
+
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="loginCtrl.form.password" placeholder="Password">
+            </label>
+        </div>
+
+        <div class="padding">
+            <button class="button button-block button-positive"
+                    ng-click="loginCtrl.login()"
+                    ng-disabled="!loginCtrl.isFormReady()">
+                Connexion
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

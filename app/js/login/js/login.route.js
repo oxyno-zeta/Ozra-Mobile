@@ -1,26 +1,27 @@
 /*
  * Author: Alexandre Havrileck (Oxyno-zeta) 
- * Date: 26/02/16
+ * Date: 02/03/16
  * Licence: See Readme
  */
 (function () {
 	'use strict';
 
 	angular
-		.module('ozra.splash')
+		.module('ozra.login')
 		.config(routeConfig);
 
 		/** @ngInject */
 		function routeConfig ($stateProvider) {
 		    $stateProvider
-				.state('splash', {
-					url: '/splash',
-					templateUrl: 'js/splash/splash.html',
+				.state('solo.login', {
+					url: '/login',
 					cache: false,
-					onEnter: function($timeout, splashService){
-						$timeout(function(){
-							splashService.followRequest();
-						}, 1);
+					views: {
+						content: {
+							templateUrl: 'js/login/login.html',
+							controller: 'LoginController',
+							controllerAs: 'loginCtrl'
+						}
 					}
 				});
 		}

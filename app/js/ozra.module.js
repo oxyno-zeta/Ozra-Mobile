@@ -9,7 +9,10 @@
 	angular
 		.module('ozra', [
 			'ozra.core',
-			'ozra.splash'
+			'ozra.solo',
+			'ozra.splash',
+			'ozra.login',
+			'ozra.technical'
 		]);
 
 })();
