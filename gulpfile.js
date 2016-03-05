@@ -15,8 +15,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var inject = require('gulp-inject');
 var angularFilesort = require('gulp-angular-filesort');
 var csso = require('gulp-csso');
-var uglifySaveLicense = require('uglify-save-license');
-var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
 var useref = require('gulp-useref');
 var gulpif = require('gulp-if');
@@ -139,9 +137,9 @@ gulp.task('build', function(){
 	return gulp.src(path.join(paths.tmpDir, '/*.html'))
 		.pipe(useref())
 		.pipe(gulpif('*.js', ngAnnotate()))
-		.pipe(gulpif('*.js', uglify({
+		/*.pipe(gulpif('*.js', uglify({
 			preserveComments: uglifySaveLicense
-		})))
+		})))*/
 		.pipe(gulpif('*.css', csso()))
 		.pipe(gulpif('*.html', minifyHtml({
 			empty: true,
