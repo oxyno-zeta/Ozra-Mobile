@@ -30,7 +30,6 @@
 				username: username,
 				password: password
 			};
-			console.log(systemDaoService.login);
 			systemDaoService.login.post(null, body, deferred.resolve, deferred.reject);
 			return deferred.promise;
 		}
