@@ -2,11 +2,9 @@
   "name": "Ozra",
   "private": "true",
   "dependencies": {
-    "pouchdb": "^5.2.1",
-    "ngstorage": "^0.3.10",
-    "angular-pouchdb": "^4.1.0",
     "lodash": "^4.5.1",
     "ionic": "driftyco/ionic-bower#1.2.4",
-    "angular-resource": "^1.5.0"
+    "angular-resource": "^1.5.0",
+    "angular-local-storage": "^0.2.5"
   }
 }
