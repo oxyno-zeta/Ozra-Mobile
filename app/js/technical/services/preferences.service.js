@@ -69,6 +69,10 @@
 			return true;
 		}
 
+		/**
+		 * Init preferences
+		 * @returns {*}
+		 */
 		function init(){
 			return preferencesDaoService.setPreferences(preferencesDaoService.createEmpty());
 		}

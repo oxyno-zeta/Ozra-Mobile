@@ -31,6 +31,9 @@
 			return preferencesService.isPreferencesCompleted(vm.preferences);
 		}
 
+		/**
+		 * Save preferences
+		 */
 		function save(){
 			preferencesService.savePreferences(vm.preferences).then(function(_preferences){
 				vm.preferences = _preferences;
