@@ -30,7 +30,7 @@
 				username: username,
 				password: password
 			};
-			systemDaoService.login.post(null, body, deferred.resolve, deferred.reject);
+			systemDaoService.resource.post(null, body, deferred.resolve, deferred.reject);
 			return deferred.promise;
 		}
 	}

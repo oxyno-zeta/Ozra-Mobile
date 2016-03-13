@@ -11,16 +11,25 @@
 		.service('systemDaoService', systemDaoService);
 
 	/* @ngInject */
-	function systemDaoService($resource) {
+	function systemDaoService($resource, $rootScope, preferencesService) {
 		/* jshint validthis: true */
 		var vm = this;
 		/* jshint validthis: false */
-
-		vm.login = $resource('http://localhost:2050/api/system/login',
+		vm.resource = $resource(preferencesService.getServerUrlForAPI() + '/api/system/login',
 			null,
 			{
-				post: {method:'POST'}
+				post: {method: 'POST'}
 			});
+
+		// Update
+		$rootScope.$on('preferencesService:update', function(){
+			// Refresh resource
+			vm.resource = $resource(preferencesService.getServerUrlForAPI() + '/api/system/login',
+				null,
+				{
+					post: {method: 'POST'}
+				});
+		});
 	}
 
 })();

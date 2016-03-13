@@ -24,6 +24,9 @@
 
 		////////////////
 
+		/**
+		 * Login action
+		 */
 		function login(){
 			systemService.login(vm.form.username, vm.form.password).then(function(result){
 				console.log(result);

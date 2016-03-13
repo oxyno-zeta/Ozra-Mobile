@@ -11,15 +11,18 @@
 		.service('preferencesService', preferencesService);
 
 	/* @ngInject */
-	function preferencesService(preferencesDaoService) {
+	function preferencesService($q, $rootScope, preferencesDaoService) {
 		/* jshint validthis: true */
 		var self = this;
 		/* jshint validthis: false */
+		// Variables
+		var cache;
 		// Functions
 		self.getPreferences = getPreferences;
 		self.savePreferences = savePreferences;
 		self.isPreferencesCompleted = isPreferencesCompleted;
 		self.init = init;
+		self.getServerUrlForAPI = getServerUrlForAPI;
 
 		////////////////
 
@@ -28,7 +31,13 @@
 		 * @returns {*}
 		 */
 		function getPreferences(){
-			return preferencesDaoService.getPreferences();
+			var deferred = $q.defer();
+			preferencesDaoService.getPreferences().then(function(preferences){
+				// Save in cache
+				cache = preferences;
+				deferred.resolve(preferences);
+			}, deferred.reject);
+			return deferred.promise;
 		}
 
 		/**
@@ -36,6 +45,7 @@
 		 * @returns {*}
 		 */
 		function savePreferences(preferences){
+			var deferred = $q.defer();
 			var _preferences = _.cloneDeep(preferences);
 			// Modify url if needed
 			if (!(_.startsWith(_preferences.serverUrl, 'http://') ||
@@ -46,7 +56,15 @@
 				_preferences.serverUrl.substring(0, (_preferences.serverUrl.length - 1));
 			}
 
-			return preferencesDaoService.setPreferences(_preferences);
+			// Save in cache
+			cache = _preferences;
+			// Save
+			preferencesDaoService.setPreferences(_preferences).then(function(){
+				$rootScope.$broadcast('preferencesService:update');
+				deferred.resolve(_preferences);
+			}, deferred.reject);
+
+			return deferred.promise;
 		}
 
 		/**
@@ -75,6 +93,14 @@
 		 */
 		function init(){
 			return preferencesDaoService.setPreferences(preferencesDaoService.createEmpty());
+		}
+
+		/**
+		 * Get Server url for API request
+		 * @returns {string}
+		 */
+		function getServerUrlForAPI(){
+			return cache.serverUrl;
 		}
 	}
 

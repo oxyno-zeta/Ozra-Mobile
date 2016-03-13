@@ -13,7 +13,6 @@
 	/** @ngInject */
 	function preferencesDaoService($q, localStorageService, preferencesModel) {
 		// Private
-		var preferencesCache;
 		var databaseName = 'preferences';
 
 		// Public
@@ -35,13 +34,13 @@
 		function getPreferences(){
 			var deferred = $q.defer();
 			// Get preferences in storage
-			preferencesCache = localStorageService.get(databaseName);
+			var preferences = localStorageService.get(databaseName);
 			// Check if there is nothing
-			if (_.isUndefined(preferencesCache) || _.isNull(preferencesCache)){
+			if (_.isUndefined(preferences) || _.isNull(preferences)){
 				deferred.reject();
 			}
 			else {
-				deferred.resolve(preferencesCache);
+				deferred.resolve(preferences);
 			}
 			return deferred.promise;
 		}
@@ -57,8 +56,7 @@
 			var result = localStorageService.set(databaseName, preferences);
 			if (result){
 				// Set in cache
-				preferencesCache = preferences;
-				deferred.resolve(preferencesCache);
+				deferred.resolve(preferences);
 			}
 			else {
 				deferred.reject();
