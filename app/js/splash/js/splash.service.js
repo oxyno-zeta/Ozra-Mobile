@@ -11,7 +11,7 @@
 		.service('splashService', splashService);
 
 	/** @ngInject */
-	function splashService($state, $ionicHistory, $ionicPlatform) {
+	function splashService($state, $ionicHistory, $ionicPlatform, preferencesService) {
 		/* jshint validthis: true */
 		var self = this;
 		/* jshint validthis: false */
@@ -23,6 +23,9 @@
 
 		////////////////
 
+		/**
+		 * Continue to next request
+		 */
 		function followRequest() {
 			// Waiting platform ready
 			$ionicPlatform.ready(function(){
@@ -34,7 +37,26 @@
 					disableBack: true
 				});
 
-				$state.go('solo.login');
+				preferencesService.getPreferences().then(function(preferences){
+					// Has preferences => Check if there are ok
+					if (preferencesService.isPreferencesCompleted(preferences)){
+						$state.go(self.toState, self.toParams);
+					}
+					else {
+						// Not complete
+						$state.go('solo.preferences');
+					}
+				}, function(err){
+					if (_.isUndefined(err) || _.isNull(err)){
+						// If there is nothing, populate with default object
+						preferencesService.init().finally(function(){
+							$state.go('solo.preferences');
+						});
+						return;
+					}
+					// Has not preferences => go to preferences
+					$state.go('solo.preferences');
+				});
 			});
 		}
 	}

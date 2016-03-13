@@ -11,6 +11,7 @@
 			'ozra.core',
 			'ozra.solo',
 			'ozra.splash',
+			'ozra.preferences',
 			'ozra.login',
 			'ozra.technical'
 		]);
