@@ -43,7 +43,7 @@ gulp.task('watch', function(){
 });
 
 gulp.task('dev', function(cb){
-	return gulpSequence(['partials', 'sass', 'js'], 'inject', 'build', cb);
+	return gulpSequence(['partials', 'sass', 'js', 'others'], 'inject', 'build', cb);
 });
 
 gulp.task('clean', function(cb){
@@ -107,6 +107,16 @@ gulp.task('js', function(){
 	]).pipe(gulp.dest(paths.tmpDir));
 });
 
+gulp.task('others', function(){
+	return gulp.src([
+		path.join(paths.sourcesDir, '/**/*.png'),
+		path.join(paths.sourcesDir, '/**/*.{eot,svg,ttf,woff}'),
+		path.join(paths.bower, '/ionic/**/*.{eot,svg,ttf,woff}'),
+		path.join('!' + paths.bower, '/**/vendor/**/*'),
+		path.join('!' + paths.sourcesDir, '/**/vendor/**/*')
+	]).pipe(gulp.dest(paths.distDir));
+});
+
 gulp.task('inject', function(){
 	var injectStyles = gulp.src([
 		path.join(paths.tmpDir, '/**/*.css')
@@ -130,8 +140,6 @@ gulp.task('inject', function(){
 		.pipe(wiredep({}, wiredepConf))
 		.pipe(gulp.dest(paths.tmpDir));
 });
-
-
 
 gulp.task('build', function(){
 	return gulp.src(path.join(paths.tmpDir, '/*.html'))
