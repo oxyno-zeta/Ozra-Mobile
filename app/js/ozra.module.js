@@ -10,7 +10,10 @@
 		.module('ozra', [
 			'ozra.core',
 			'ozra.solo',
+			'ozra.menu',
+			'ozra.popup',
 			'ozra.splash',
+			'ozra.welcome',
 			'ozra.preferences',
 			'ozra.login',
 			'ozra.technical'

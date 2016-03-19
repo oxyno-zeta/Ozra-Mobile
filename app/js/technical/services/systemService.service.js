@@ -11,7 +11,7 @@
 		.service('systemService', systemService);
 
 	/** @ngInject */
-	function systemService($q, systemDaoService) {
+	function systemService($q, userService, systemDaoService) {
 		/* jshint validthis: true */
 		this.login = login;
 		/* jshint validthis: false */
@@ -30,7 +30,17 @@
 				username: username,
 				password: password
 			};
-			systemDaoService.resource.post(null, body, deferred.resolve, deferred.reject);
+			systemDaoService.login(body).then(function(response){
+				// Store data before resolve
+				var promises = [];
+				promises.push(userService.saveUserId(response.userId));
+				promises.push(userService.saveUserToken(response.token));
+				// Save all
+				$q.all(promises).then(function(){
+					// Resolve
+					deferred.resolve(response);
+				}, deferred.reject);
+			}, deferred.reject);
 			return deferred.promise;
 		}
 	}

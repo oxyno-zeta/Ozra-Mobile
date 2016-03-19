@@ -11,25 +11,27 @@
 		.service('systemDaoService', systemDaoService);
 
 	/* @ngInject */
-	function systemDaoService($resource, $rootScope, preferencesService) {
+	function systemDaoService($q, systemApiService) {
 		/* jshint validthis: true */
 		var vm = this;
 		/* jshint validthis: false */
-		vm.resource = $resource(preferencesService.getServerUrlForAPI() + '/api/system/login',
-			null,
-			{
-				post: {method: 'POST'}
-			});
+		// Variables
+		// Functions
+		vm.login = login;
 
-		// Update
-		$rootScope.$on('preferencesService:update', function(){
-			// Refresh resource
-			vm.resource = $resource(preferencesService.getServerUrlForAPI() + '/api/system/login',
-				null,
-				{
-					post: {method: 'POST'}
-				});
-		});
+		////////////////////////////:
+
+		/**
+		 * Login
+		 * @param body
+		 * @returns {*}
+		 */
+		function login(body){
+			var deferred = $q.defer();
+			systemApiService.resource.post(null, body, deferred.resolve, deferred.reject);
+			return deferred.promise;
+		}
+
 	}
 
 })();

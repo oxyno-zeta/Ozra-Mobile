@@ -11,7 +11,7 @@
 		.controller('LoginController', LoginController);
 
 	/** @ngInject */
-	function LoginController(systemService) {
+	function LoginController($state, systemService, popupService) {
 		var vm = this;
 		// Variables
 		vm.form = {
@@ -29,9 +29,21 @@
 		 */
 		function login(){
 			systemService.login(vm.form.username, vm.form.password).then(function(result){
-				console.log(result);
+				$state.go('menu.welcome');
 			}, function(err){
-				console.error(err);
+				if (_.isEqual(err.status, 0)){
+					popupService.serverNotAccessible();
+				}
+				else if (_.isEqual(err.status, 404) ||
+					_.inRange(err.status, 500, 599)){
+					popupService.serverError();
+				}
+				else if (_.isEqual(err.status, 401)){
+					popupService.notAuthorized();
+				}
+				else {
+					popupService.unknownError();
+				}
 			});
 		}
 

@@ -14,6 +14,7 @@
 		function routeConfig ($stateProvider) {
 		    $stateProvider
 				.state('solo', {
+					url: '/solo',
 					templateUrl: 'js/solo/solo.html'
 				});
 		}
