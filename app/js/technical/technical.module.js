@@ -11,7 +11,8 @@
 			'ozra.technical.api',
 			'ozra.technical.dao',
 			'ozra.technical.model',
-			'ozra.technical.services'
+			'ozra.technical.services',
+			'ozra.technical.run'
 		]);
 
 })();
