@@ -7,7 +7,7 @@
 	'use strict';
 
 	angular
-		.module('ozra.splash')
+		.module('ozra.technical.services')
 		.service('splashService', splashService);
 
 	/** @ngInject */
