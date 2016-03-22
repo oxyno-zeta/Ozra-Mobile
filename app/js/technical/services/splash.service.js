@@ -11,7 +11,7 @@
 		.service('splashService', splashService);
 
 	/** @ngInject */
-	function splashService($state, $ionicHistory, $ionicPlatform, preferencesService) {
+	function splashService($q, $rootScope, $state, $ionicHistory, $ionicPlatform, preferencesService, userService) {
 		/* jshint validthis: true */
 		var self = this;
 		/* jshint validthis: false */
@@ -40,7 +40,17 @@
 				preferencesService.getPreferences().then(function(preferences){
 					// Has preferences => Check if there are ok
 					if (preferencesService.isPreferencesCompleted(preferences)){
-						$state.go(self.toState, self.toParams);
+						var promises = [];
+						// Get all user token and id
+						promises.push(userService.getUserId());
+						promises.push(userService.getUserToken());
+						// Wait for all
+						$q.all(promises).then(function(){
+							// Continue
+							$state.go(self.toState, self.toParams);
+						}, function(){
+							$state.go('solo.login');
+						});
 					}
 					else {
 						// Not complete

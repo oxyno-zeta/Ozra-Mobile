@@ -16,7 +16,7 @@
 		var self = this;
 		/* jshint validthis: false */
 		// Variables
-		var cache;
+		var cache = {};
 		// Functions
 		self.getPreferences = getPreferences;
 		self.savePreferences = savePreferences;
@@ -35,6 +35,8 @@
 			preferencesDaoService.getPreferences().then(function(preferences){
 				// Save in cache
 				cache = preferences;
+				// Broadcast message
+				$rootScope.$broadcast('preferencesService:cached');
 				deferred.resolve(preferences);
 			}, deferred.reject);
 			return deferred.promise;
