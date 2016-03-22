@@ -47,7 +47,7 @@
 						// Wait for all
 						$q.all(promises).then(function(){
 							// Continue
-							$state.go(self.toState, self.toParams);
+							$state.go('menu.welcome');
 						}, function(){
 							$state.go('solo.login');
 						});

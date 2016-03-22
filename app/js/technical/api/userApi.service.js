@@ -33,7 +33,7 @@
 					get: {method: 'GET'}
 				});
 		});
-		
+
 		$rootScope.$on('preferencesService:cached', function(){
 			// Refresh resource
 			self.resource = $resource(preferencesService.getServerUrlForAPI() + '/api/users/:id',

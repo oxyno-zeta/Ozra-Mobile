@@ -15,12 +15,9 @@
 		$rootScope.$on('$stateChangeStart', function(event, _toState, _toParams) {
 			// Check if init is already done
 			if (!splashService.initialized){
-				// Get right state
-				var toParams = (_.isEqual(_toState.name, 'splash')) ? {} : _toParams;
-				var toState = (_.isEqual(_toState.name, 'splash')) ? 'solo.login' : _toState.name;
 				// Store data
-				splashService.toParams = toParams;
-				splashService.toState = toState;
+				splashService.toParams = _toParams;
+				splashService.toState = _toState.name;;
 				splashService.initialized = true;
 				event.preventDefault();
 
