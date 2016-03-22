@@ -8,11 +8,7 @@
 
 	angular
 		.module('ozra.preferences')
-		.config(routeConfig).run(function($rootScope){
-		$rootScope.$on('$stateChangeError', function(){
-			console.log(arguments);
-		});
-	});
+		.config(routeConfig);
 
 		/** @ngInject */
 		function routeConfig ($stateProvider) {
