@@ -11,7 +11,7 @@
 		.controller('preferencesController', preferencesController);
 
 	/* @ngInject */
-	function preferencesController($state, $ionicHistory, preferencesService, preferences) {
+	function preferencesController($state, $ionicHistory, popupService, preferencesService, preferences) {
 		/* jshint validthis: true */
 		var vm = this;
 		/* jshint validthis: false */
@@ -38,15 +38,22 @@
 			preferencesService.savePreferences(vm.preferences).then(function(_preferences){
 				vm.preferences = _preferences;
 
+				$ionicHistory.nextViewOptions({
+					disableAnimate: true,
+					disableBack: true
+				});
+
 				if (!$state.includes('menu')){
 					// Not in menu => go to login
-					$ionicHistory.nextViewOptions({
-						disableAnimate: true,
-						disableBack: true
-					});
-
 					$state.go('solo.login');
 				}
+				else {
+					// Go to welcome page
+					$state.go('menu.welcome');
+				}
+			}, function(){
+				// Something fail
+				popupService.unknownError();
 			});
 		}
 	}

@@ -27,6 +27,21 @@
 							return preferencesService.getPreferences();
 						}
 					}
+				})
+				.state('menu.preferences', {
+					url: '/preferences',
+					views: {
+						'content@menu': {
+							templateUrl: 'js/preferences/preferences.html',
+							controller: 'preferencesController',
+							controllerAs: 'preferencesCtrl'
+						}
+					},
+					resolve: {
+						preferences: function (preferencesService){
+							return preferencesService.getPreferences();
+						}
+					}
 				});
 		}
 

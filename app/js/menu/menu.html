@@ -10,6 +10,15 @@
                 <ion-item menu-close ui-sref="menu.welcome">
                     Accueil
                 </ion-item>
+
+                <ion-item class="item-divider"></ion-item>
+
+                <ion-item menu-close ui-sref="menu.preferences">
+                    Préférences
+                </ion-item>
+                <ion-item menu-close ng-click="menuCtrl.logout()">
+                    Déconnexion
+                </ion-item>
             </ion-list>
         </ion-content>
     </ion-side-menu>
