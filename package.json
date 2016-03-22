@@ -36,7 +36,11 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    {
+      "locator": "https://github.com/lampaa/com.lampa.startapp.git",
+      "id": "com.lampa.startapp"
+    }
   ],
   "cordovaPlatforms": [
     "android"
