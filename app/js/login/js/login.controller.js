@@ -38,7 +38,7 @@
 					_.inRange(err.status, 500, 599)){
 					popupService.serverError();
 				}
-				else if (_.isEqual(err.status, 401)){
+				else if (_.isEqual(err.status, 401) || _.isEqual(err.status, 403)){
 					popupService.notAuthorized();
 				}
 				else {
