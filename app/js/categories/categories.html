@@ -1,0 +1,14 @@
+<ion-view>
+    <ion-nav-title>
+        Categories
+    </ion-nav-title>
+
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="category in categoriesCtrl.categories"
+                      ui-sref="menu.actions({category: category})">
+                <p ng-bind="category"></p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

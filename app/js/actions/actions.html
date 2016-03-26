@@ -1,0 +1,13 @@
+<ion-view>
+    <ion-nav-title>
+        Actions
+    </ion-nav-title>
+
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="action in actionsCtrl.actions">
+                <p ng-bind="action.name"></p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

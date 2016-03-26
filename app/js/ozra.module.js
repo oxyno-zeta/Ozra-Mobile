@@ -14,6 +14,8 @@
 			'ozra.popup',
 			'ozra.splash',
 			'ozra.welcome',
+			'ozra.actions',
+			'ozra.categories',
 			'ozra.preferences',
 			'ozra.login',
 			'ozra.technical'
