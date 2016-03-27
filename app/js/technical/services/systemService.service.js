@@ -11,10 +11,12 @@
 		.service('systemService', systemService);
 
 	/** @ngInject */
-	function systemService($q, userService, systemDaoService) {
+	function systemService($q, $state, $ionicHistory, userService, popupService, systemDaoService) {
 		/* jshint validthis: true */
-		this.login = login;
+		var self = this;
 		/* jshint validthis: false */
+		self.login = login;
+		self.logout = logout;
 
 		////////////////
 
@@ -42,6 +44,30 @@
 				}, deferred.reject);
 			}, deferred.reject);
 			return deferred.promise;
+		}
+
+		/**
+		 * User logout
+		 */
+		function logout(){
+			// Store promises
+			var promises = [];
+			promises.push(userService.saveUserId(null));
+			promises.push(userService.saveUserToken(null));
+			// Wait for all save
+			$q.all(promises).then(function(){
+				// No back button
+				$ionicHistory.nextViewOptions({
+					disableAnimate: true,
+					disableBack: true
+				});
+
+				// New data stored => Token and user id cleared => Go to login
+				$state.go('solo.login');
+			}, function(){
+				// Something fail
+				popupService.unknownError();
+			});
 		}
 	}
 
