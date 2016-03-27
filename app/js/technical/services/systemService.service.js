@@ -50,6 +50,7 @@
 		 * User logout
 		 */
 		function logout(){
+			var deferred = $q.defer();
 			// Store promises
 			var promises = [];
 			promises.push(userService.saveUserId(null));
@@ -63,11 +64,13 @@
 				});
 
 				// New data stored => Token and user id cleared => Go to login
-				$state.go('solo.login');
+				$state.go('solo.login').then(deferred.resolve, deferred.reject);
 			}, function(){
 				// Something fail
 				popupService.unknownError();
+				deferred.reject();
 			});
+			return deferred.promise;
 		}
 	}
 
