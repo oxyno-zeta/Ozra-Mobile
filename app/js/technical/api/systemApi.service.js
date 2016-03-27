@@ -30,6 +30,15 @@
 					post: {method: 'POST'}
 				});
 		});
+
+		$rootScope.$on('preferencesService:cached', function(){
+			// Refresh resource
+			vm.resource = $resource(preferencesService.getServerUrlForAPI() + '/api/system/login',
+				null,
+				{
+					post: {method: 'POST'}
+				});
+		});
 	}
 
 })();
