@@ -9,6 +9,7 @@
 	angular
 		.module('ozra.technical', [
 			'ozra.technical.api',
+			'ozra.technical.wrapper',
 			'ozra.technical.dao',
 			'ozra.technical.model',
 			'ozra.technical.services',

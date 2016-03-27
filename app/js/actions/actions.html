@@ -5,7 +5,7 @@
 
     <ion-content>
         <ion-list>
-            <ion-item ng-repeat="action in actionsCtrl.actions">
+            <ion-item ng-repeat="action in actionsCtrl.actions" ng-click="actionsCtrl.run(action)">
                 <p ng-bind="action.name"></p>
             </ion-item>
         </ion-list>

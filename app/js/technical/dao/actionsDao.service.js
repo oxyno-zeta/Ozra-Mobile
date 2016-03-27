@@ -47,6 +47,7 @@
 			var deferred = $q.defer();
 			var params = {
 				id: actionId,
+				subtext: 'run',
 				token: token
 			};
 			actionsApiService.resource.get(params, function(response){

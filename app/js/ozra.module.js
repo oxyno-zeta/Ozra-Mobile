@@ -12,6 +12,7 @@
 			'ozra.solo',
 			'ozra.menu',
 			'ozra.popup',
+			'ozra.loading',
 			'ozra.splash',
 			'ozra.welcome',
 			'ozra.actions',

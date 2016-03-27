@@ -18,9 +18,17 @@
 		// Variables
 		vm.actions = actions;
 		// Functions
+		vm.run = run;
 
 		////////////////
 
+		/**
+		 * Run action
+		 * @param action
+		 */
+		function run(action){
+			actionsService.run(action);
+		}
 	}
 
 })();

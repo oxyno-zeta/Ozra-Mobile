@@ -16,7 +16,7 @@
 		var self = this;
 		/* jshint validthis: false */
 
-		self.resource = $resource(preferencesService.getServerUrlForAPI() + '/api/actions/:id',
+		self.resource = $resource(preferencesService.getServerUrlForAPI() + '/api/actions/:id/:subtext',
 			null,
 			{
 				get: {method: 'GET'}
