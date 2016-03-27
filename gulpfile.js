@@ -5,7 +5,6 @@ var gulp = require('gulp');
 var bump = require('gulp-bump');
 var gulpSequence = require('run-sequence');
 var del = require('del');
-var es = require('event-stream');
 var minifyHtml = require('gulp-minify-html');
 var angularTemplatecache = require('gulp-angular-templatecache');
 var wiredep = require('wiredep').stream;
@@ -18,6 +17,8 @@ var csso = require('gulp-csso');
 var ngAnnotate = require('gulp-ng-annotate');
 var useref = require('gulp-useref');
 var gulpif = require('gulp-if');
+var rev = require('gulp-rev');
+var revReplace = require('gulp-rev-replace');
 
 var paths = {
   	sass: ['./scss/**/*.scss'],
@@ -155,6 +156,8 @@ gulp.task('build', function(){
 			quotes: true,
 			conditionals: true
 		})))
+		.pipe(gulpif('!index.html', rev()))
+		.pipe(revReplace())
 		.pipe(gulp.dest(paths.distDir));
 });
 
