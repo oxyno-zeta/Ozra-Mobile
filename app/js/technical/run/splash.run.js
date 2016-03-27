@@ -17,7 +17,7 @@
 			if (!splashService.initialized){
 				// Store data
 				splashService.toParams = _toParams;
-				splashService.toState = _toState.name;;
+				splashService.toState = _toState.name;
 				splashService.initialized = true;
 				event.preventDefault();
 

@@ -14,7 +14,7 @@
 		function routeConfig ($stateProvider) {
 		    $stateProvider
 				.state('menu.categories', {
-					url: '/categories/',
+					url: '/categories',
 					views: {
 						'content@menu': {
 							templateUrl: 'js/categories/categories.html',
