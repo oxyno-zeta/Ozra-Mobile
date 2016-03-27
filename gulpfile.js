@@ -85,7 +85,7 @@ gulp.task('sass', function(){
 	var injectOptions = {
 		transform: function (filePath) {
 			filePath = filePath.replace(paths.sourcesDir + '/', '');
-			return '@import "' + filePath + '";';
+			return '\n@import "' + filePath + '";\n';
 		},
 		starttag: '// inject',
 		endtag: '// endinject',
