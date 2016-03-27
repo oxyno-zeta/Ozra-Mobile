@@ -25,11 +25,7 @@
 		 * @returns {boolean}
 		 */
 		function isServeMode(){
-			var isEdge = ionic.Platform.isEdge();
-			var isIOS = ionic.Platform.isIOS();
-			var isAndroid = ionic.Platform.isAndroid();
-			var isWindowsPhone = ionic.Platform.isWindowsPhone();
-			return !(isAndroid && isEdge && isIOS && isWindowsPhone);
+			return (_.isUndefined(window.cordova));
 		}
 	}
 
