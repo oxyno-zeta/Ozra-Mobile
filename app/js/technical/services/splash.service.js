@@ -11,7 +11,7 @@
 		.service('splashService', splashService);
 
 	/** @ngInject */
-	function splashService($q, $rootScope, $state, $ionicHistory, $ionicPlatform, preferencesService, userService) {
+	function splashService($q, $state, $ionicHistory, $ionicPlatform, networkService, preferencesService, userService) {
 		/* jshint validthis: true */
 		var self = this;
 		/* jshint validthis: false */
@@ -36,6 +36,13 @@
 					disableAnimate: true,
 					disableBack: true
 				});
+
+				// Check if device is offline
+				if (!networkService.isDeviceOnline()){
+					// Go to network error page
+					$state.go('solo.networkerror');
+					return;
+				}
 
 				preferencesService.getPreferences().then(function(preferences){
 					// Has preferences => Check if there are ok

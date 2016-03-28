@@ -19,6 +19,7 @@
 			'ozra.categories',
 			'ozra.preferences',
 			'ozra.login',
+			'ozra.networkError',
 			'ozra.technical'
 		]);
 
