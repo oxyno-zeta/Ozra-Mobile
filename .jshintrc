@@ -57,6 +57,7 @@
     "$": false,
     "cordova": false,
     "ionic": false,
+    "Connection": false,
     "StatusBar": false,
     "_": false
   }
