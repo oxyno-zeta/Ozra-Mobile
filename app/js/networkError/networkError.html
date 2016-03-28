@@ -1,0 +1,19 @@
+<ion-view>
+    <ion-nav-title>
+        Network error
+    </ion-nav-title>
+
+    <ion-content>
+        <div class="card">
+            <div class="item login-item">
+                <p class="login-text">No network connection detected !</p>
+                <p class="login-text">Please connect to network and reload application when it is ready.</p>
+                <button class="button button-positive"
+                        ng-click="networkErrorCtrl.reloadApplication()"
+                        ng-disabled="!networkErrorCtrl.isOnline">
+                    Reload application
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

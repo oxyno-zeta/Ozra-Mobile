@@ -1,0 +1,22 @@
+<ion-view>
+    <ion-nav-title>
+        Preferences
+    </ion-nav-title>
+
+    <ion-content>
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Server URL</span>
+                <input type="text" ng-model="preferencesCtrl.preferences.serverUrl" placeholder="Server URL">
+            </label>
+        </div>
+
+        <div class="padding">
+            <button class="button button-block button-positive"
+                    ng-click="preferencesCtrl.save()"
+                    ng-disabled="!preferencesCtrl.isPreferencesCompleted()">
+                Save
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

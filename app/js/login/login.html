@@ -1,0 +1,33 @@
+<ion-view>
+    <ion-nav-title>
+        Login
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <button class="button" ui-sref="solo.preferences">
+            Preferences
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Username</span>
+                <input type="text" ng-model="loginCtrl.form.username" placeholder="Username">
+            </label>
+
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="loginCtrl.form.password" placeholder="Password">
+            </label>
+        </div>
+
+        <div class="padding">
+            <button class="button button-block button-positive"
+                    ng-click="loginCtrl.login()"
+                    ng-disabled="!loginCtrl.isFormReady()">
+                Login
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
