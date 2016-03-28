@@ -42,7 +42,8 @@
     {
       "locator": "https://github.com/lampaa/com.lampa.startapp.git",
       "id": "com.lampa.startapp"
-    }
+    },
+    "cordova-plugin-network-information"
   ],
   "cordovaPlatforms": [
     "android"
