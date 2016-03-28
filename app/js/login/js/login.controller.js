@@ -12,7 +12,9 @@
 
 	/** @ngInject */
 	function LoginController($state, systemService, popupService) {
+		/* jshint validthis: true */
 		var vm = this;
+		/* jshint validthis: false */
 		// Variables
 		vm.form = {
 			username: '',
