@@ -9,11 +9,11 @@ You can found Ozra server [here](https://github.com/oxyno-zeta/Ozra).
 ### Init
 There are some to do before building the application : 
 ```
-1) bower install
-2) gulp
+1. bower install
+2. gulp
 ```
-1) is for installing bower components
-2) for building the application javascript/html/css
+1. is for installing bower components
+2. for building the application javascript/html/css
 
 ### Test on browser
 Use this command to test on browser :
