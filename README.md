@@ -1,4 +1,7 @@
 # Ozra Mobile App
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/oxyno-zeta/Ozra-Mobile.svg)](https://greenkeeper.io/)
+
 Application to launch action on Ozra server
 
 ## Project
